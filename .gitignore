@@ -1,0 +1,11 @@
+node_modules/
+bun.lock
+
+.env
+.env.*
+!.env.example
+
+.vscode
+.idea
+
+.DS_Store

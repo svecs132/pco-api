@@ -1,0 +1,7 @@
+= pco-api
+
+[quote]
+a Typescript library for the https://planningcenter.com[planning center] https://developer.planning.center/docs[API]
+
+[WARNING]
+This library is a *work in progress* and is not yet ready for production use.
