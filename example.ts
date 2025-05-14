@@ -12,5 +12,9 @@ for (const st of serviceTypes) {
   const plans = await st.getPlans("future");
   for (const plan of plans) {
     console.log(`  ${plan}`);
+    const items = await plan.getItems();
+    for (const item of items) {
+      console.log(`    ${item}`);
+    }
   }
 }

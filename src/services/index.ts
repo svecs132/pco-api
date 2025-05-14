@@ -11,7 +11,8 @@ export class ServicesClient extends Client {
   }
 
   public async getServiceTypes() {
-    const res = await this.fetch<t.ServiceType[]>("service_types");
+    const path = `service_types`;
+    const res = await this.fetch<t.ServiceType[]>(path);
     if ("errors" in res) {
       throw new Error(`Error fetching service types: ${res.errors}`);
     }
@@ -19,7 +20,8 @@ export class ServicesClient extends Client {
   }
 
   public async getServiceType(id: string) {
-    const res = await this.fetch<t.ServiceType>(`service_types/${id}`);
+    const path = `service_types/${id}`;
+    const res = await this.fetch<t.ServiceType>(path);
     if ("errors" in res) {
       throw new Error(`Error fetching service type: ${res.errors}`);
     }

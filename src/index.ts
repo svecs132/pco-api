@@ -3,8 +3,9 @@ import * as types from "./types";
 export const BASE_URL = "https://api.planningcenteronline.com";
 
 export abstract class Client {
-  private appId: string;
-  private secret: string;
+  private readonly appId: string;
+  private readonly secret: string;
+  private debug: boolean = false;
   abstract readonly baseUrl: string;
 
   constructor(appId: string, secret: string) {
@@ -29,18 +30,50 @@ export abstract class Client {
     init: RequestInit = {}
   ): Promise<types.Response<T>> {
     const url = `${this.baseUrl}/${path}`;
-    const res = await fetch(url, {
-      ...init,
-      headers: {
-        ...init.headers,
-        Authorization: `Basic ${btoa(`${this.appId}:${this.secret}`)}`,
-        "Content-Type": "application/json",
-      },
-    });
-    if (!res.ok) {
-      throw new Error(`HTTP error: ${res.status} ${res.statusText}`);
+    if (this.debug) {
+      console.debug(`[\x1b[36mDEBUG\x1b[0m] fetch ${url}`);
     }
-    return (await res.json()) as types.Response<T>;
+    while (true) {
+      const res = await fetch(url, {
+        ...init,
+        headers: {
+          ...init.headers,
+          Authorization: `Basic ${btoa(`${this.appId}:${this.secret}`)}`,
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.status === 429) {
+        const retryAfter = res.headers.get("Retry-After");
+        if (retryAfter) {
+          const delay = parseInt(retryAfter, 10);
+          if (this.debug) {
+            console.debug(
+              `[\x1b[36mDEBUG\x1b[0m] Rate limited, retrying in ${delay}s`
+            );
+          }
+          await new Promise((resolve) => setTimeout(resolve, delay * 1000));
+          continue;
+        } else {
+          throw new Error(
+            "Rate limit exceeded and no Retry-After header provided"
+          );
+        }
+      }
+      if (!res.ok) {
+        if (this.debug) {
+          console.debug(
+            `[\x1b[36mDEBUG\x1b[0m] HTTP error: ${res.status} ${res.statusText}`
+          );
+        }
+        throw new Error(`HTTP error: ${res.status} ${res.statusText}`);
+      }
+      return (await res.json()) as types.Response<T>;
+    }
+  }
+
+  public withDebug(): this {
+    this.debug = true;
+    return this;
   }
 }
 

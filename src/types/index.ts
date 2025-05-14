@@ -366,7 +366,6 @@ export type Plan = Resource<
     series: Series;
     created_by: Person;
     updated_by: Person;
-    linked_publishing_episode: LinkedPublishingEpisode;
     attachment_types: AttachmentType;
   }
 >;
