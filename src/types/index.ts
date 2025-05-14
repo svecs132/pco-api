@@ -14,14 +14,14 @@ export type Response<Resource extends AnyResource | AnyResource[]> =
       }[];
     };
 
-export type RelOne<T extends AnyResource> = {
+type RelOne<T extends AnyResource> = {
   data: {
     type: T["type"];
     id: string;
   } | null;
 };
 
-export type RelMany<T extends AnyResource> = {
+type RelMany<T extends AnyResource> = {
   data: {
     type: T["type"];
     id: string;

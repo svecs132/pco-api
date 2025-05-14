@@ -1,4 +1,4 @@
-import { ServicesClient } from "./src/services";
+import { ServicesClient } from "./mod";
 
 let services = new ServicesClient(
   process.env["PCO_APP_ID"] || "",
