@@ -321,7 +321,40 @@ export type MediaSchedule = Resource<"MediaSchedule", {}>;
 
 export type NeededPosition = Resource<"NeededPosition", {}>;
 
-export type Organization = Resource<"Organization", {}>;
+export type Organization = Resource<
+  "Organization",
+  {
+    allow_mp3_download: boolean;
+    calendar_starts_on_sunday: boolean;
+    ccli: unknown | null; // TODO: type
+    ccli_auto_reporting_enabled: boolean;
+    ccli_connected: boolean;
+    ccli_reporting_enabled: boolean;
+    created_at: string;
+    date_format: string; // TODO: enum
+    extra_file_storage_allowed: boolean;
+    file_storage_exceeded: boolean;
+    file_storage_extra_charges: unknown | null;
+    file_storage_extra_enabled: boolean;
+    file_storage_size: number;
+    file_storage_size_used: number;
+    legacy_id: string;
+    music_stand_enabled: boolean;
+    name: string;
+    owner_name: string;
+    people_allowed: number;
+    people_remaining: number;
+    projector_enabled: boolean;
+    rehearsal_mix_enabled: boolean;
+    rehearsal_pack_connected: boolean;
+    required_to_set_download_permission: string; // TODO: enum
+    secret: string;
+    time_zone: string; // TODO: enum
+    twenty_four_hour_time: boolean;
+    updated_at: string;
+  },
+  undefined
+>;
 
 export type Person = Resource<"Person", {}>;
 

@@ -1,6 +1,7 @@
 import { BASE_URL, Client } from "..";
-import * as t from "../types";
+import * as types from "../types";
 
+import { Organization } from "./organization";
 import { ServiceType } from "./service_type";
 
 export class ServicesClient extends Client {
@@ -10,9 +11,18 @@ export class ServicesClient extends Client {
     super(appId, secret);
   }
 
+  public async getOrganization() {
+    const path = `/`;
+    const res = await this.fetch<types.Organization>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching organization: ${res.errors}`);
+    }
+    return new Organization(this, res.data);
+  }
+
   public async getServiceTypes() {
     const path = `service_types`;
-    const res = await this.fetch<t.ServiceType[]>(path);
+    const res = await this.fetch<types.ServiceType[]>(path);
     if ("errors" in res) {
       throw new Error(`Error fetching service types: ${res.errors}`);
     }
@@ -21,7 +31,7 @@ export class ServicesClient extends Client {
 
   public async getServiceType(id: string) {
     const path = `service_types/${id}`;
-    const res = await this.fetch<t.ServiceType>(path);
+    const res = await this.fetch<types.ServiceType>(path);
     if ("errors" in res) {
       throw new Error(`Error fetching service type: ${res.errors}`);
     }
