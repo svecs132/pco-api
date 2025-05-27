@@ -1,4 +1,4 @@
-import { Resource, Client } from "..";
+import { Resource, Client, type RequestPagination, paginate } from "..";
 import * as types from "../types";
 
 import { Plan } from "./plan";
@@ -13,11 +13,12 @@ export class ServiceType extends Resource<types.ServiceType> {
   }
 
   public async getPlans(
-    filter: "future" | "past" | "no_dates" | undefined = undefined
+    filter: "future" | "past" | "no_dates" | undefined = undefined,
+    pagination: RequestPagination = {}
   ) {
     const path = `service_types/${this.id}/plans?order=sort_date${
       filter ? `&filter=${filter}` : ""
-    }`;
+    }&${paginate(pagination)}`;
     const res = await this.client.fetch<types.Plan[]>(path);
     if ("errors" in res) {
       throw new Error(`Error fetching plans: ${res.errors}`);

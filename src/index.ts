@@ -96,3 +96,19 @@ export abstract class Resource<T extends types.AnyResource> {
     return this.data.relationships;
   }
 }
+
+export type RequestPagination = {
+  offset?: number;
+  per_page?: number;
+};
+
+export const paginate = (p: RequestPagination) => {
+  const params: string[] = [];
+  if (p.offset !== undefined) {
+    params.push(`offset=${p.offset}`);
+  }
+  if (p.per_page !== undefined) {
+    params.push(`per_page=${p.per_page}`);
+  }
+  return params.join("&");
+};

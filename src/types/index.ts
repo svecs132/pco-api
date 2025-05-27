@@ -356,7 +356,53 @@ export type Organization = Resource<
   undefined
 >;
 
-export type Person = Resource<"Person", {}>;
+export type Person = Resource<
+  "Person",
+  {
+    access_media_attachments: boolean;
+    access_plan_attachments: boolean;
+    access_song_attachments: boolean;
+    anniversary: string | null;
+    archived: boolean;
+    archived_at: string | null;
+    assigned_to_rehearsal_team: boolean;
+    birthdate: string | null;
+    created_at: string;
+    facebook_id: string | null;
+    first_name: string;
+    full_name: string;
+    given_name: string | null;
+    ical_code: string;
+    last_name: string;
+    legacy_id: string;
+    logged_in_at: string;
+    max_permissions: string;
+    max_plan_permissions: string;
+    media_permissions: string;
+    middle_name: string | null;
+    name_prefix: string | null;
+    name_suffix: string | null;
+    nickname: string | null;
+    notes: unknown | null; // TODO: type
+    passed_background_check: boolean;
+    permissions: string;
+    photo_thumbnail_url: string;
+    photo_url: string;
+    praise_charts_enabled: boolean;
+    preferred_app: string;
+    preferred_max_plans_per_day: number | null;
+    preferred_max_plans_per_month: number | null;
+    site_administrator: boolean;
+    song_permissions: string;
+    status: string;
+    updated_at: string;
+  },
+  {
+    created_by: Person;
+    updated_by: Person;
+    current_folder: Folder;
+  }
+>;
 
 export type PersonTeamPositionAssignment = Resource<
   "PersonTeamPositionAssignment",

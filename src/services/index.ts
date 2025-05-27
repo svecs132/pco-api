@@ -1,7 +1,8 @@
-import { BASE_URL, Client } from "..";
+import { BASE_URL, Client, type RequestPagination, paginate } from "..";
 import * as types from "../types";
 
 import { Organization } from "./organization";
+import { Person } from "./person";
 import { ServiceType } from "./service_type";
 
 export class ServicesClient extends Client {
@@ -20,8 +21,26 @@ export class ServicesClient extends Client {
     return new Organization(this, res.data);
   }
 
-  public async getServiceTypes() {
-    const path = `service_types`;
+  public async getPeople(pagination: RequestPagination = {}) {
+    const path = `people?${paginate(pagination)}`;
+    const res = await this.fetch<types.Person[]>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching people: ${res.errors}`);
+    }
+    return res.data.map((data) => new Person(this, data));
+  }
+
+  public async getPerson(id: string) {
+    const path = `people/${id}`;
+    const res = await this.fetch<types.Person>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching person: ${res.errors}`);
+    }
+    return new Person(this, res.data);
+  }
+
+  public async getServiceTypes(pagination: RequestPagination = {}) {
+    const path = `service_types?${paginate(pagination)}`;
     const res = await this.fetch<types.ServiceType[]>(path);
     if ("errors" in res) {
       throw new Error(`Error fetching service types: ${res.errors}`);
