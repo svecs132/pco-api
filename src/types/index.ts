@@ -270,7 +270,19 @@ export type EmailTemplateRenderedResponse = Resource<
   {}
 >;
 
-export type Folder = Resource<"Folder", {}>;
+export type Folder = Resource<
+  "Folder",
+  {
+    container: string;
+    created_at: string;
+    name: string;
+    updated_at: string;
+  },
+  {
+    parent: Folder;
+    // TODO: Campus ???
+  }
+>;
 
 export type FolderPath = Resource<"FolderPath", {}>;
 

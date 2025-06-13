@@ -1,6 +1,7 @@
 import { BASE_URL, Client, type RequestPagination, paginate } from "..";
 import * as types from "../types";
 
+import { Folder } from "./folder";
 import { Organization } from "./organization";
 import { Person } from "./person";
 import { ServiceType } from "./service_type";
@@ -12,8 +13,17 @@ export class ServicesClient extends Client {
     super(appId, secret);
   }
 
+  public async getFolders(pagination: RequestPagination = {}) {
+    const path = `folders?${paginate(pagination)}`;
+    const res = await this.fetch<types.Folder[]>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching folders: ${res.errors}`);
+    }
+    return res.data.map((data) => new Folder(this, data));
+  }
+
   public async getOrganization() {
-    const path = `/`;
+    const path = ``;
     const res = await this.fetch<types.Organization>(path);
     if ("errors" in res) {
       throw new Error(`Error fetching organization: ${res.errors}`);
