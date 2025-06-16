@@ -46,7 +46,7 @@ client.getPeople().then((people) => {
   - [ ] recorded start time
 - [ ] get the current timer if you want
   - [ ] full item length
-  - [ ] end item on time
+  - [ ] to end item on time
 - [ ] live control
   - [ ] take/release control
   - [ ] restart / jump to end of plan
