@@ -1,4 +1,4 @@
-import { Resource, Client } from "..";
+import { Resource, Client } from "./..";
 import * as types from "../types";
 
 export class Item extends Resource<types.Item> {

@@ -1,4 +1,4 @@
-import { Resource, Client, type RequestPagination, paginate } from "..";
+import { Resource, Client, type RequestPagination, paginate } from "./..";
 import * as types from "../types";
 
 import { Item } from "./item";
@@ -15,7 +15,7 @@ export class Plan extends Resource<types.Plan> {
     return `(\x1b[33mPlan\x1b[0m \x1b[2m:id\x1b[0m ${this.id} \x1b[2m:dates\x1b[0m ${this.attributes.dates})`;
   }
 
-  public async getItems(pagination: RequestPagination = {}) {
+  public async getItems(pagination: RequestPagination = {}): Promise<Item[]> {
     const path = `service_types/${this.serviceTypeId}/plans/${
       this.id
     }/items?${paginate(pagination)}`;

@@ -1,12 +1,12 @@
 {
   "name": "pco-api",
   "description": "a Typescript library for the planning center API",
+  "type": "module",
   "module": "./mod.ts",
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
-  },
-  "type": "module"
+  }
 }
