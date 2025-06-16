@@ -1,4 +1,10 @@
-import { BASE_URL, Client, type RequestPagination, paginate } from "./..";
+import {
+  BASE_URL,
+  Client,
+  type Options,
+  type RequestPagination,
+  paginate,
+} from "./..";
 import * as types from "../types";
 
 import { Folder } from "./folder";
@@ -9,8 +15,8 @@ import { ServiceType } from "./service_type";
 export class ServicesClient extends Client {
   readonly baseUrl: string = `${BASE_URL}/services/v2`;
 
-  constructor(appId: string, secret: string) {
-    super(appId, secret);
+  constructor(options: Options) {
+    super(options);
   }
 
   public async getFolders(

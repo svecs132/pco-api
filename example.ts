@@ -1,9 +1,9 @@
 import { ServicesClient } from "./mod";
 
-let services = new ServicesClient(
-  process.env["PCO_APP_ID"] || "",
-  process.env["PCO_SECRET"] || ""
-).withDebug();
+let services = new ServicesClient({
+  appId: process.env["PCO_APP_ID"] || "",
+  secret: process.env["PCO_SECRET"] || "",
+});
 
 const folders = await services.getFolders({ per_page: 100 });
 

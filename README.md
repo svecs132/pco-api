@@ -2,10 +2,41 @@
 
 > a Typescript library for the [planning center](https://planningcenter.com) [API](https://developer.planning.center/docs)
 
+[![JSR](https://jsr.io/badges/@svecs132/pco-api)](https://jsr.io/@svecs132/pco-api)
+
 > [!WARNING]
 > this library is a **work in progress** and is not yet ready for production use
 
+## usage
+
+```shell
+# if using bun
+bunx jsr add @svecs132/pco-api
+
+# if using npm
+npx jsr add @svecs132/pco-api
+
+# if using yarn
+yarn add jsr:@svecs132/pco-api
+```
+
+```typescript
+import { ServicesClient } from "@svecs132/pco-api";
+
+const client = new ServicesClient({
+  appId: "APP ID HERE",
+  secret: "SECRET HERE",
+});
+
+client.getPeople().then((people) => {
+  console.log(people.join("\n"));
+});
+```
+
 ## features
+
+> [!NOTE]
+> so far only focusing on the Services API but will expand to other parts in the future
 
 - [x] browse folders and service types
 - [x] get items of a plan

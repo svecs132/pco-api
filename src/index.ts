@@ -2,21 +2,18 @@ import * as types from "./types";
 
 export const BASE_URL = "https://api.planningcenteronline.com";
 
+export type Options = { appId: string; secret: string; debug?: boolean };
+
 export abstract class Client {
   private readonly appId: string;
   private readonly secret: string;
   private debug: boolean = false;
   abstract readonly baseUrl: string;
 
-  constructor(appId: string, secret: string) {
-    if (!appId || !secret) {
-      throw new Error("App ID and Secret are required");
-    } else if (appId.length !== 64 || secret.length !== 64) {
-      throw new Error("App ID and Secret must be 64 characters long");
-    }
-
-    this.appId = appId;
-    this.secret = secret;
+  constructor(options: Options) {
+    this.appId = options.appId;
+    this.secret = options.secret;
+    this.debug = options.debug ?? false;
   }
 
   /**
@@ -69,11 +66,6 @@ export abstract class Client {
       }
       return (await res.json()) as types.Response<T>;
     }
-  }
-
-  public withDebug(): this {
-    this.debug = true;
-    return this;
   }
 }
 
