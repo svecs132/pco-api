@@ -1,0 +1,34 @@
+import { Resource, Client, type RequestPagination, paginate } from "./..";
+import * as types from "../types";
+
+import Arrangement from "./arrangement";
+
+export default class Song extends Resource<types.Song> {
+  constructor(client: Client, data: types.Song) {
+    super(client, data);
+  }
+
+  toString(): string {
+    return `(\x1b[33mSong\x1b[0m \x1b[2m:id\x1b[0m ${this.id} \x1b[2m:title\x1b[0m ${this.attributes.title})`;
+  }
+
+  public async getArrangements(
+    pagination: RequestPagination = {}
+  ): Promise<Arrangement[]> {
+    const path = `songs/${this.id}/arrangements?${paginate(pagination)}`;
+    const res = await this.client.fetch<types.Arrangement[]>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching arrangements: ${res.errors}`);
+    }
+    return res.data.map((data) => new Arrangement(this.client, data));
+  }
+
+  public async getArrangement(id: string): Promise<Arrangement> {
+    const path = `songs/${this.id}/arrangements/${id}`;
+    const res = await this.client.fetch<types.Arrangement>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching arrangement: ${res.errors}`);
+    }
+    return new Arrangement(this.client, res.data);
+  }
+}

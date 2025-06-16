@@ -5,6 +5,6 @@ let services = new ServicesClient({
   secret: process.env["PCO_SECRET"] || "",
 });
 
-const folders = await services.getFolders({ per_page: 100 });
+const songs = await services.getSongs({ per_page: 100 });
 
-console.log(folders.join("\n"));
+console.log(songs.join("\n"));
