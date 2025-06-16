@@ -7,7 +7,7 @@ export type Options = { appId: string; secret: string; debug?: boolean };
 export abstract class Client {
   private readonly appId: string;
   private readonly secret: string;
-  private debug: boolean = false;
+  private debug: boolean;
   abstract readonly baseUrl: string;
 
   constructor(options: Options) {

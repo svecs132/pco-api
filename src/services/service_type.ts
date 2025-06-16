@@ -1,9 +1,9 @@
 import { Resource, Client, type RequestPagination, paginate } from "./..";
 import * as types from "../types";
 
-import { Plan } from "./plan";
+import Plan from "./plan";
 
-export class ServiceType extends Resource<types.ServiceType> {
+export default class ServiceType extends Resource<types.ServiceType> {
   constructor(client: Client, data: types.ServiceType) {
     super(client, data);
   }

@@ -1,7 +1,7 @@
 import { Resource, Client } from "./..";
 import * as types from "../types";
 
-export class Item extends Resource<types.Item> {
+export default class Item extends Resource<types.Item> {
   constructor(client: Client, data: types.Item) {
     super(client, data);
   }

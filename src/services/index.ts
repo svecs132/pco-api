@@ -7,12 +7,16 @@ import {
 } from "./..";
 import * as types from "../types";
 
-import { Folder } from "./folder";
-import { Organization } from "./organization";
-import { Person } from "./person";
-import { ServiceType } from "./service_type";
+import Arrangement from "./arrangement";
+import Folder from "./folder";
+import Item from "./item";
+import Organization from "./organization";
+import Person from "./person";
+import Plan from "./plan";
+import ServiceType from "./service_type";
+import Song from "./song";
 
-export class ServicesClient extends Client {
+export default class ServicesClient extends Client {
   readonly baseUrl: string = `${BASE_URL}/services/v2`;
 
   constructor(options: Options) {
@@ -78,4 +82,33 @@ export class ServicesClient extends Client {
     }
     return new ServiceType(this, res.data);
   }
+
+  public async getSongs(pagination: RequestPagination = {}): Promise<Song[]> {
+    const path = `songs?${paginate(pagination)}`;
+    const res = await this.fetch<types.Song[]>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching songs: ${res.errors}`);
+    }
+    return res.data.map((data) => new Song(this, data));
+  }
+
+  public async getSong(id: string): Promise<Song> {
+    const path = `songs/${id}`;
+    const res = await this.fetch<types.Song>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching song: ${res.errors}`);
+    }
+    return new Song(this, res.data);
+  }
 }
+
+export {
+  Arrangement,
+  Folder,
+  Item,
+  Organization,
+  Person,
+  Plan,
+  ServiceType,
+  Song,
+};
