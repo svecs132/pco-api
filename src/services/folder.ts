@@ -1,9 +1,9 @@
 import { Resource, Client, type RequestPagination, paginate } from "./..";
 import * as types from "../types";
 
-import { ServiceType } from "./service_type";
+import ServiceType from "./service_type";
 
-export class Folder extends Resource<types.Folder> {
+export default class Folder extends Resource<types.Folder> {
   constructor(client: Client, data: types.Folder) {
     super(client, data);
   }

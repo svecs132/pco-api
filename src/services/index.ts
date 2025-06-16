@@ -7,12 +7,12 @@ import {
 } from "./..";
 import * as types from "../types";
 
-import { Folder } from "./folder";
-import { Organization } from "./organization";
-import { Person } from "./person";
-import { ServiceType } from "./service_type";
+import Folder from "./folder";
+import Organization from "./organization";
+import Person from "./person";
+import ServiceType from "./service_type";
 
-export class ServicesClient extends Client {
+export default class ServicesClient extends Client {
   readonly baseUrl: string = `${BASE_URL}/services/v2`;
 
   constructor(options: Options) {
@@ -79,3 +79,5 @@ export class ServicesClient extends Client {
     return new ServiceType(this, res.data);
   }
 }
+
+export { Folder, Organization, Person, ServiceType };
