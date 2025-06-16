@@ -1,3 +1,6 @@
+/**
+ * Type of the response from the PCO Services API.
+ */
 export type Response<Resource extends AnyResource | AnyResource[]> =
   | {
       data: Resource;
@@ -33,6 +36,9 @@ type Links = {
   [key: string]: string;
 };
 
+/**
+ * A union type representing any resource in the PCO Services API.
+ */
 export type AnyResource =
   | Arrangement
   | ArrangementSections

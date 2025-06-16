@@ -4,6 +4,9 @@ export const BASE_URL = "https://api.planningcenteronline.com";
 
 export type Options = { appId: string; secret: string; debug?: boolean };
 
+/**
+ * The base class for all the different clients.
+ */
 export abstract class Client {
   private readonly appId: string;
   private readonly secret: string;
@@ -89,11 +92,20 @@ export abstract class Resource<T extends types.AnyResource> {
   }
 }
 
+/**
+ * Pagination options for collection requests.
+ */
 export type RequestPagination = {
   offset?: number;
   per_page?: number;
 };
 
+/**
+ * Converts pagination options to a query string.
+ *
+ * @param {RequestPagination} p The pagination options.
+ * @returns A query string for the pagination options.
+ */
 export const paginate = (p: RequestPagination) => {
   const params: string[] = [];
   if (p.offset !== undefined) {
