@@ -12,6 +12,12 @@ export default class Folder extends Resource<types.Folder> {
     return `(\x1b[33mFolder\x1b[0m \x1b[2m:id\x1b[0m ${this.id} \x1b[2m:name\x1b[0m ${this.attributes.name})`;
   }
 
+  /**
+   * Fetches all the service types in the folder.
+   *
+   * @param {RequestPagination} pagination pagination options for the request
+   * @returns {Promise<ServiceType[]>} a promise that resolves to an array of ServiceType objects
+   */
   public async getServiceTypes(
     pagination: RequestPagination = {}
   ): Promise<ServiceType[]> {
