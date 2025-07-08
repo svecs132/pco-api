@@ -3,6 +3,9 @@ import * as types from "../types/services";
 
 import Item from "./item";
 
+/**
+ * A plan (an instance of a service type) in the Services API.
+ */
 export default class Plan extends Resource<types.Plan> {
   private serviceTypeId: string;
 

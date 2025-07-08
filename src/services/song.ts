@@ -3,6 +3,9 @@ import * as types from "../types/services";
 
 import Arrangement from "./arrangement";
 
+/**
+ * A song in the Services API.
+ */
 export default class Song extends Resource<types.Song> {
   constructor(client: Client, data: types.Song) {
     super(client, data);

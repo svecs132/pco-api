@@ -3,6 +3,9 @@ import * as types from "../types/services";
 
 import Plan from "./plan";
 
+/**
+ * A service type in the Services API.
+ */
 export default class ServiceType extends Resource<types.ServiceType> {
   constructor(client: Client, data: types.ServiceType) {
     super(client, data);

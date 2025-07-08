@@ -1,3 +1,8 @@
+/**
+ * This module contains all the resources and functionality for the Services API.
+ * @module
+ */
+
 export { ServicesClient as default } from "../src/services";
 
 export { default as Arrangement } from "../src/services/arrangement";
