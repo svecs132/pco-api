@@ -1,6 +1,9 @@
 import { Resource, Client } from "./..";
-import * as types from "../types";
+import * as types from "../types/services";
 
+/**
+ * An arrangement of a song.
+ */
 export default class Arrangement extends Resource<types.Arrangement> {
   constructor(client: Client, data: types.Arrangement) {
     super(client, data);

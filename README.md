@@ -21,7 +21,7 @@ yarn add jsr:@svecs132/pco-api
 ```
 
 ```typescript
-import { ServicesClient } from "@svecs132/pco-api";
+import ServicesClient from "@svecs132/pco-api/services";
 
 const client = new ServicesClient({
   appId: "APP ID HERE",

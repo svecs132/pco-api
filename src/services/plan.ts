@@ -1,5 +1,5 @@
 import { Resource, Client, type RequestPagination, paginate } from "./..";
-import * as types from "../types";
+import * as types from "../types/services";
 
 import Item from "./item";
 

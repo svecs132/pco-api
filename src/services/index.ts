@@ -5,18 +5,18 @@ import {
   type RequestPagination,
   paginate,
 } from "./..";
-import * as types from "../types";
+import * as types from "../types/services";
 
-import Arrangement from "./arrangement";
 import Folder from "./folder";
-import Item from "./item";
 import Organization from "./organization";
 import Person from "./person";
-import Plan from "./plan";
 import ServiceType from "./service_type";
 import Song from "./song";
 
-export default class ServicesClient extends Client {
+/**
+ * A client for the PCO Services API.
+ */
+export class ServicesClient extends Client {
   readonly baseUrl: string = `${BASE_URL}/services/v2`;
 
   constructor(options: Options) {
@@ -162,14 +162,3 @@ export default class ServicesClient extends Client {
     return new Song(this, res.data);
   }
 }
-
-export {
-  Arrangement,
-  Folder,
-  Item,
-  Organization,
-  Person,
-  Plan,
-  ServiceType,
-  Song,
-};

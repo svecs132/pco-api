@@ -1,5 +1,5 @@
 import { Resource, Client } from "./..";
-import * as types from "../types";
+import * as types from "../types/services";
 
 export default class Person extends Resource<types.Person> {
   constructor(client: Client, data: types.Person) {
