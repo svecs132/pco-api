@@ -1,7 +1,13 @@
+/**
+ * This module contains all the type definitions for the PCO Services API resources.
+ * @module
+ */
+
 import type { Resource, Response } from "./.";
 
 /**
  * A union type representing any resource in the PCO Services API.
+ * @internal
  */
 export type AnyResource =
   | Arrangement
@@ -71,6 +77,7 @@ export type AnyResource =
 
 /**
  * Type of the response from the PCO Services API.
+ * @internal
  */
 export type ServicesResponse = Response<AnyResource | AnyResource[]>;
 

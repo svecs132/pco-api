@@ -20,6 +20,10 @@ export type Response<Resource extends AnyResource | AnyResource[]> =
       }[];
     };
 
+/**
+ * A helper type for constructing one-to-one relationship types.
+ * @internal
+ */
 type RelOne<T extends AnyResource> = {
   data: {
     type: T["type"];
@@ -27,6 +31,10 @@ type RelOne<T extends AnyResource> = {
   } | null;
 };
 
+/**
+ * A helper type for constructing one-to-many relationship types.
+ * @internal
+ */
 type RelMany<T extends AnyResource> = {
   data: {
     type: T["type"];
@@ -34,6 +42,10 @@ type RelMany<T extends AnyResource> = {
   }[];
 };
 
+/**
+ * A helper type for the links field of resources, just a map from a key to an url string.
+ * @internal
+ */
 type Links = {
   self: string;
   [key: string]: string;
@@ -67,5 +79,6 @@ export type Resource<
 
 /**
  * A union type representing any resource in the PCO API.
+ * @internal
  */
 export type AnyResource = AnyServicesResource;
