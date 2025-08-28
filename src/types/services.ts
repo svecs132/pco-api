@@ -1,5 +1,6 @@
 /**
  * This module contains all the type definitions for the PCO Services API resources.
+ *
  * @module
  */
 
@@ -7,6 +8,7 @@ import type { Resource, Response } from "./.";
 
 /**
  * A union type representing any resource in the PCO Services API.
+ *
  * @internal
  */
 export type AnyResource =
@@ -81,6 +83,9 @@ export type AnyResource =
  */
 export type ServicesResponse = Response<AnyResource | AnyResource[]>;
 
+/**
+ * @ignore
+ */
 export type Arrangement = Resource<
   "Arrangement",
   {
@@ -125,6 +130,9 @@ export type Arrangement = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type ArrangementSections = Resource<
   "ArrangementSections",
   {
@@ -137,10 +145,19 @@ export type ArrangementSections = Resource<
   undefined
 >;
 
+/**
+ * @ignore
+ */
 export type Attachment = Resource<"Attachment", {}>;
 
+/**
+ * @ignore
+ */
 export type AttachmentActivity = Resource<"AttachmentActivity", {}>;
 
+/**
+ * @ignore
+ */
 export type AttachmentType = Resource<
   "AttachmentType",
   {
@@ -159,6 +176,9 @@ export type AttachmentType = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type AttachmentTypeGroup = Resource<
   "AttachmentTypeGroup",
   {
@@ -167,8 +187,14 @@ export type AttachmentTypeGroup = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type Attendance = Resource<"Attendance", {}>;
 
+/**
+ * @ignore
+ */
 export type AvailableSignup = Resource<
   "AvailableSignup",
   {
@@ -184,6 +210,9 @@ export type AvailableSignup = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type Blockout = Resource<
   "Blockout",
   {
@@ -209,27 +238,57 @@ export type Blockout = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type BlockoutDate = Resource<"BlockoutDate", {}>;
 
+/**
+ * @ignore
+ */
 export type BlockoutException = Resource<"BlockoutException", {}>;
 
+/**
+ * @ignore
+ */
 export type BlockoutScheduleConflict = Resource<"BlockoutScheduleConflict", {}>;
 
+/**
+ * @ignore
+ */
 export type Chat = Resource<"Chat", {}>;
 
+/**
+ * @ignore
+ */
 export type Contributor = Resource<"Contributor", {}>;
 
+/**
+ * @ignore
+ */
 export type CustomSlide = Resource<"CustomSlide", {}>;
 
+/**
+ * @ignore
+ */
 export type Email = Resource<"Email", {}>;
 
+/**
+ * @ignore
+ */
 export type EmailTemplate = Resource<"EmailTemplate", {}>;
 
+/**
+ * @ignore
+ */
 export type EmailTemplateRenderedResponse = Resource<
   "EmailTemplateRenderedResponse",
   {}
 >;
 
+/**
+ * @ignore
+ */
 export type Folder = Resource<
   "Folder",
   {
@@ -244,8 +303,14 @@ export type Folder = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type FolderPath = Resource<"FolderPath", {}>;
 
+/**
+ * @ignore
+ */
 export type Item = Resource<
   "Item",
   {
@@ -273,26 +338,59 @@ export type Item = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type ItemNote = Resource<"ItemNote", {}>;
 
+/**
+ * @ignore
+ */
 export type ItemNoteCategory = Resource<"ItemNoteCategory", {}>;
 
+/**
+ * @ignore
+ */
 export type ItemTime = Resource<"ItemTime", {}>;
 
+/**
+ * @ignore
+ */
 export type Key = Resource<"Key", {}>;
 
+/**
+ * @ignore
+ */
 export type Layout = Resource<"Layout", {}>;
 
+/**
+ * @ignore
+ */
 export type Live = Resource<"Live", {}>;
 
+/**
+ * @ignore
+ */
 export type LiveController = Resource<"LiveController", {}>;
 
+/**
+ * @ignore
+ */
 export type Media = Resource<"Media", {}>;
 
+/**
+ * @ignore
+ */
 export type MediaSchedule = Resource<"MediaSchedule", {}>;
 
+/**
+ * @ignore
+ */
 export type NeededPosition = Resource<"NeededPosition", {}>;
 
+/**
+ * @ignore
+ */
 export type Organization = Resource<
   "Organization",
   {
@@ -328,6 +426,9 @@ export type Organization = Resource<
   undefined
 >;
 
+/**
+ * @ignore
+ */
 export type Person = Resource<
   "Person",
   {
@@ -376,11 +477,17 @@ export type Person = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type PersonTeamPositionAssignment = Resource<
   "PersonTeamPositionAssignment",
   {}
 >;
 
+/**
+ * @ignore
+ */
 export type Plan = Resource<
   "Plan",
   {
@@ -421,30 +528,69 @@ export type Plan = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type PlanNote = Resource<"PlanNote", {}>;
 
+/**
+ * @ignore
+ */
 export type PlanNoteCategory = Resource<"PlanNoteCategory", {}>;
 
+/**
+ * @ignore
+ */
 export type PlanPerson = Resource<"PlanPerson", {}>;
 
+/**
+ * @ignore
+ */
 export type PlanPersonTime = Resource<"PlanPersonTime", {}>;
 
+/**
+ * @ignore
+ */
 export type PlanTemplate = Resource<"PlanTemplate", {}>;
 
+/**
+ * @ignore
+ */
 export type PlanTime = Resource<"PlanTime", {}>;
 
+/**
+ * @ignore
+ */
 export type PublicView = Resource<"PublicView", {}>;
 
+/**
+ * @ignore
+ */
 export type ReportTemplate = Resource<"ReportTemplate", {}>;
 
+/**
+ * @ignore
+ */
 export type Schedule = Resource<"Schedule", {}>;
 
+/**
+ * @ignore
+ */
 export type ScheduledPerson = Resource<"ScheduledPerson", {}>;
 
+/**
+ * @ignore
+ */
 export type SchedulingPreference = Resource<"SchedulingPreference", {}>;
 
+/**
+ * @ignore
+ */
 export type Series = Resource<"Series", {}>;
 
+/**
+ * @ignore
+ */
 export type ServiceType = Resource<
   "ServiceType",
   {
@@ -475,14 +621,29 @@ export type ServiceType = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type ServiceTypePath = Resource<"ServiceTypePath", {}>;
 
+/**
+ * @ignore
+ */
 export type SignupSheet = Resource<"SignupSheet", {}>;
 
+/**
+ * @ignore
+ */
 export type SignupSheetMetadata = Resource<"SignupSheetMetadata", {}>;
 
+/**
+ * @ignore
+ */
 export type SkippedAttachment = Resource<"SkippedAttachment", {}>;
 
+/**
+ * @ignore
+ */
 export type Song = Resource<
   "Song",
   {
@@ -502,6 +663,9 @@ export type Song = Resource<
   undefined
 >;
 
+/**
+ * @ignore
+ */
 export type SongSchedule = Resource<
   "SongSchedule",
   {
@@ -521,25 +685,55 @@ export type SongSchedule = Resource<
   }
 >;
 
+/**
+ * @ignore
+ */
 export type SongbookStatus = Resource<"SongbookStatus", {}>;
 
+/**
+ * @ignore
+ */
 export type SplitTeamRehearsalAssignment = Resource<
   "SplitTeamRehearsalAssignment",
   {}
 >;
 
+/**
+ * @ignore
+ */
 export type Tag = Resource<"Tag", {}>;
 
+/**
+ * @ignore
+ */
 export type TagGroup = Resource<"TagGroup", {}>;
 
+/**
+ * @ignore
+ */
 export type Team = Resource<"Team", {}>;
 
+/**
+ * @ignore
+ */
 export type TeamLeader = Resource<"TeamLeader", {}>;
 
+/**
+ * @ignore
+ */
 export type TeamPosition = Resource<"TeamPosition", {}>;
 
+/**
+ * @ignore
+ */
 export type TextSetting = Resource<"TextSetting", {}>;
 
+/**
+ * @ignore
+ */
 export type TimePreferenceOption = Resource<"TimePreferenceOption", {}>;
 
+/**
+ * @ignore
+ */
 export type Zoom = Resource<"Zoom", {}>;

@@ -17,6 +17,11 @@ import Song from "./song";
  * A client for the PCO Services API.
  */
 export class ServicesClient extends Client {
+  /**
+   * Base URL of the sub-API.
+   *
+   * @internal
+   */
   readonly baseUrl: string = `${BASE_URL}/services/v2`;
 
   constructor(options: Options) {
@@ -135,6 +140,7 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches all the songs in the organization.
+   *
    * @param {RequestPagination} pagination pagination options for the request
    * @returns {Promise<Song[]>} a promise that resolves to an array of Song objects
    */

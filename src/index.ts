@@ -22,8 +22,8 @@ export abstract class Client {
   /**
    * Performs a HTTP request and parses the data.
    *
-   * @internal
    * @param path The path to the resource.
+   * @internal
    */
   public async fetch<T extends types.AnyResource | types.AnyResource[]>(
     path: string,
@@ -94,6 +94,8 @@ export abstract class Resource<T extends types.AnyResource> {
 
 /**
  * Pagination options for collection requests.
+ *
+ * @internal
  */
 export type RequestPagination = {
   offset?: number;
@@ -105,6 +107,7 @@ export type RequestPagination = {
  *
  * @param {RequestPagination} p The pagination options.
  * @returns A query string for the pagination options.
+ * @internal
  */
 export const paginate = (p: RequestPagination) => {
   const params: string[] = [];

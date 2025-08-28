@@ -9,6 +9,9 @@ export default class Arrangement extends Resource<types.Arrangement> {
     super(client, data);
   }
 
+  /**
+   * @ignore
+   */
   toString(): string {
     return `(\x1b[33mArrangement\x1b[0m \x1b[2m:id\x1b[0m ${this.id} \x1b[2m:name\x1b[0m ${this.attributes.name})`;
   }

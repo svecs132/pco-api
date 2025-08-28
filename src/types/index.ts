@@ -2,6 +2,7 @@ import type { AnyResource as AnyServicesResource } from "./services";
 
 /**
  * Type of the response from the PCO API.
+ *
  * @internal
  */
 export type Response<Resource extends AnyResource | AnyResource[]> =
@@ -22,6 +23,7 @@ export type Response<Resource extends AnyResource | AnyResource[]> =
 
 /**
  * A helper type for constructing one-to-one relationship types.
+ *
  * @internal
  */
 type RelOne<T extends AnyResource> = {
@@ -33,6 +35,7 @@ type RelOne<T extends AnyResource> = {
 
 /**
  * A helper type for constructing one-to-many relationship types.
+ *
  * @internal
  */
 type RelMany<T extends AnyResource> = {
@@ -44,6 +47,7 @@ type RelMany<T extends AnyResource> = {
 
 /**
  * A helper type for the links field of resources, just a map from a key to an url string.
+ *
  * @internal
  */
 type Links = {
@@ -53,6 +57,7 @@ type Links = {
 
 /**
  * A type for constructing resource types from attributes and relationships.
+ *
  * @internal
  */
 export type Resource<
@@ -65,7 +70,6 @@ export type Resource<
   type: Type;
   id: string;
   attributes: Attributes;
-  links: Links;
   relationships: Relationships extends undefined
     ? undefined
     : {
@@ -75,10 +79,12 @@ export type Resource<
           ? RelOne<Relationships[Rel]>
           : never;
       };
+  links: Links;
 };
 
 /**
  * A union type representing any resource in the PCO API.
+ *
  * @internal
  */
 export type AnyResource = AnyServicesResource;

@@ -11,6 +11,9 @@ export default class Song extends Resource<types.Song> {
     super(client, data);
   }
 
+  /**
+   * @ignore
+   */
   toString(): string {
     return `(\x1b[33mSong\x1b[0m \x1b[2m:id\x1b[0m ${this.id} \x1b[2m:title\x1b[0m ${this.attributes.title})`;
   }
