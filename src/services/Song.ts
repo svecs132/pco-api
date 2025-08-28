@@ -1,7 +1,7 @@
 import { Resource, Client, type RequestPagination, paginate } from "./..";
 import * as types from "../types/services";
 
-import Arrangement from "./arrangement";
+import Arrangement from "./Arrangement";
 
 /**
  * A song in the Services API.

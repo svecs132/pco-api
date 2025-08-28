@@ -7,12 +7,12 @@ import {
 } from "./..";
 import * as types from "../types/services";
 
-import Folder from "./folder";
-import Organization from "./organization";
-import Person from "./person";
-import ServiceType from "./service_type";
-import Song from "./song";
-import Team from "./team";
+import Folder from "./Folder";
+import Organization from "./Organization";
+import Person from "./Person";
+import ServiceType from "./ServiceType";
+import Song from "./Song";
+import Team from "./Team";
 
 /**
  * A client for the PCO Services API.

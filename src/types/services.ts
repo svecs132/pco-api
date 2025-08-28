@@ -747,7 +747,18 @@ export type Team = Resource<
 /**
  * @ignore
  */
-export type TeamLeader = Resource<"TeamLeader", {}>;
+export type TeamLeader = Resource<
+  "TeamLeader",
+  {
+    send_responses_for_accepts: boolean;
+    send_responses_for_blockouts: boolean;
+    send_responses_for_declines: boolean;
+  },
+  {
+    person: Person;
+    team: Team;
+  }
+>;
 
 /**
  * @ignore

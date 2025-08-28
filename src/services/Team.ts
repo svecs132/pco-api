@@ -1,8 +1,9 @@
 import { Resource, Client, type RequestPagination, paginate } from "./..";
 import * as types from "../types/services";
 
-import Person from "./person";
-import ServiceType from "./service_type";
+import Person from "./Person";
+import ServiceType from "./ServiceType";
+import TeamLeader from "./TeamLeader";
 
 export default class Team extends Resource<types.Team> {
   constructor(client: Client, data: types.Team) {
@@ -48,5 +49,22 @@ export default class Team extends Resource<types.Team> {
       throw new Error(`Error fetching service types: ${res.errors}`);
     }
     return res.data.map((data) => new ServiceType(this.client, data));
+  }
+
+  /**
+   * Fetches all the team leaders associated with the team.
+   *
+   * @param {RequestPagination} pagination pagination options for the request
+   * @returns {Promise<TeamLeader[]>} a promise that resolves to an array of TeamLeader objects
+   */
+  public async getTeamLeaders(
+    pagination: RequestPagination = {}
+  ): Promise<TeamLeader[]> {
+    const path = `teams/${this.id}/team_leaders?${paginate(pagination)}`;
+    const res = await this.client.fetch<types.TeamLeader[]>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching team leaders: ${res.errors}`);
+    }
+    return res.data.map((data) => new TeamLeader(this.client, data));
   }
 }

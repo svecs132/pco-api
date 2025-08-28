@@ -1,7 +1,7 @@
 import { Resource, Client, type RequestPagination, paginate } from "./..";
 import * as types from "../types/services";
 
-import ServiceType from "./service_type";
+import ServiceType from "./ServiceType";
 
 /**
  * A folder of service types.

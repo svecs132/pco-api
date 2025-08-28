@@ -5,7 +5,9 @@ let services = new ServicesClient({
   secret: process.env["PCO_SECRET"] || "",
 });
 
-const team = (await services.getTeams())[0];
-const people = await team!.getPeople();
+const teams = await services.getTeams();
+const leaders = await teams[0]!.getTeamLeaders();
 
-console.log(people.join("\n"));
+for (const l of leaders) {
+  console.log((await l.getPerson()).toString());
+}

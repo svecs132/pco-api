@@ -1,8 +1,8 @@
 import { Resource, Client, type RequestPagination, paginate } from "./..";
 import * as types from "../types/services";
 
-import Plan from "./plan";
-import Team from "./team";
+import Plan from "./Plan";
+import Team from "./Team";
 
 /**
  * A service type in the Services API.
