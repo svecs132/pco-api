@@ -2,6 +2,7 @@ import { Resource, Client, type RequestPagination, paginate } from "./..";
 import * as types from "../types/services";
 
 import Plan from "./plan";
+import Team from "./team";
 
 /**
  * A service type in the Services API.
@@ -52,5 +53,20 @@ export default class ServiceType extends Resource<types.ServiceType> {
       throw new Error(`Error fetching plan: ${res.errors}`);
     }
     return new Plan(this.client, res.data);
+  }
+
+  /**
+   * Fetches all the teams associated with the service type.
+   *
+   * @param {RequestPagination} pagination pagination options for the request
+   * @returns {Promise<Team[]>} a promise that resolves to an array of Team objects
+   */
+  public async getTeams(pagination: RequestPagination = {}): Promise<Team[]> {
+    const path = `service_types/${this.id}/teams?${paginate(pagination)}`;
+    const res = await this.client.fetch<types.Team[]>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching teams: ${res.errors}`);
+    }
+    return res.data.map((data) => new Team(this.client, data));
   }
 }

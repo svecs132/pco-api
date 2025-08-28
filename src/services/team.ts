@@ -2,6 +2,7 @@ import { Resource, Client, type RequestPagination, paginate } from "./..";
 import * as types from "../types/services";
 
 import Person from "./person";
+import ServiceType from "./service_type";
 
 export default class Team extends Resource<types.Team> {
   constructor(client: Client, data: types.Team) {
@@ -30,5 +31,22 @@ export default class Team extends Resource<types.Team> {
       throw new Error(`Error fetching people: ${res.errors}`);
     }
     return res.data.map((data) => new Person(this.client, data));
+  }
+
+  /**
+   * Fetches all the service types associated with the team.
+   *
+   * @param {RequestPagination} pagination pagination options for the request
+   * @returns {Promise<ServiceType[]>} a promise that resolves to an array of ServiceType objects
+   */
+  public async getServiceTypes(
+    pagination: RequestPagination = {}
+  ): Promise<ServiceType[]> {
+    const path = `teams/${this.id}/service_types?${paginate(pagination)}`;
+    const res = await this.client.fetch<types.ServiceType[]>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching service types: ${res.errors}`);
+    }
+    return res.data.map((data) => new ServiceType(this.client, data));
   }
 }
