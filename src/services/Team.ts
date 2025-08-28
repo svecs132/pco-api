@@ -5,6 +5,9 @@ import Person from "./Person";
 import ServiceType from "./ServiceType";
 import TeamLeader from "./TeamLeader";
 
+/**
+ * A team in the Services API.
+ */
 export default class Team extends Resource<types.Team> {
   constructor(client: Client, data: types.Team) {
     super(client, data);
