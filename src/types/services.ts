@@ -77,6 +77,13 @@ export type AnyResource =
   | TimePreferenceOption
   | Zoom;
 
+type Datetime =
+  | `${number}-${number}-${number}T${number}:${number}:${number}Z`
+  | `${number}-${number}-${number}T${number}:${number}:${number}${
+      | "+"
+      | "-"}${number}:${number}`;
+type DatetimeOpt = Datetime | null;
+
 /**
  * Type of the response from the PCO Services API.
  * @internal
@@ -89,7 +96,7 @@ export type ServicesResponse = Response<AnyResource | AnyResource[]>;
 export type Arrangement = Resource<
   "Arrangement",
   {
-    archived_at: string | null;
+    archived_at: DatetimeOpt;
     bpm: number;
     chord_chart: string | null;
     chord_chart_chord_color: number;
@@ -97,7 +104,7 @@ export type Arrangement = Resource<
     chord_chart_font: string;
     chord_chart_font_size: number;
     chord_chart_key: string | null;
-    created_at: string;
+    created_at: Datetime;
     has_chord_chart: boolean;
     has_chords: boolean;
     isrc: string;
@@ -121,7 +128,7 @@ export type Arrangement = Resource<
       number: string;
     }[];
     sequence_short: string[];
-    updated_at: string;
+    updated_at: Datetime;
   },
   {
     updated_by: Person;
@@ -216,9 +223,9 @@ export type AvailableSignup = Resource<
 export type Blockout = Resource<
   "Blockout",
   {
-    created_at: string;
+    created_at: Datetime;
     description: string;
-    ends_at: string;
+    ends_at: Datetime;
     group_identifier: string;
     organization_name: string;
     reason: string;
@@ -228,9 +235,9 @@ export type Blockout = Resource<
     repeat_until: any;
     settings: any;
     share: boolean;
-    starts_at: string;
+    starts_at: Datetime;
     time_zone: string;
-    updated_at: string;
+    updated_at: Datetime;
   },
   {
     person: Person;
@@ -293,9 +300,9 @@ export type Folder = Resource<
   "Folder",
   {
     container: string;
-    created_at: string;
+    created_at: Datetime;
     name: string;
-    updated_at: string;
+    updated_at: Datetime;
   },
   {
     parent: Folder;
@@ -314,7 +321,7 @@ export type FolderPath = Resource<"FolderPath", {}>;
 export type Item = Resource<
   "Item",
   {
-    created_at: string;
+    created_at: Datetime;
     custom_arrangement_sequence: unknown; // TODO: type
     custom_arrangement_sequence_full: unknown; // TODO: type
     custom_arrangement_sequence_short: unknown; // TODO: type
@@ -326,7 +333,7 @@ export type Item = Resource<
     sequence: number;
     service_position: string;
     title: string;
-    updated_at: string;
+    updated_at: Datetime;
   },
   {
     plan: Plan;
@@ -400,7 +407,7 @@ export type Organization = Resource<
     ccli_auto_reporting_enabled: boolean;
     ccli_connected: boolean;
     ccli_reporting_enabled: boolean;
-    created_at: string;
+    created_at: Datetime;
     date_format: string; // TODO: enum
     extra_file_storage_allowed: boolean;
     file_storage_exceeded: boolean;
@@ -421,7 +428,7 @@ export type Organization = Resource<
     secret: string;
     time_zone: string; // TODO: enum
     twenty_four_hour_time: boolean;
-    updated_at: string;
+    updated_at: Datetime;
   },
   undefined
 >;
@@ -437,10 +444,10 @@ export type Person = Resource<
     access_song_attachments: boolean;
     anniversary: string | null;
     archived: boolean;
-    archived_at: string | null;
+    archived_at: DatetimeOpt;
     assigned_to_rehearsal_team: boolean;
     birthdate: string | null;
-    created_at: string;
+    created_at: Datetime;
     facebook_id: string | null;
     first_name: string;
     full_name: string;
@@ -448,7 +455,7 @@ export type Person = Resource<
     ical_code: string;
     last_name: string;
     legacy_id: string;
-    logged_in_at: string;
+    logged_in_at: Datetime;
     max_permissions: string;
     max_plan_permissions: string;
     media_permissions: string;
@@ -468,7 +475,7 @@ export type Person = Resource<
     site_administrator: boolean;
     song_permissions: string;
     status: string;
-    updated_at: string;
+    updated_at: Datetime;
   },
   {
     created_by: Person;
@@ -492,11 +499,11 @@ export type Plan = Resource<
   "Plan",
   {
     can_view_order: boolean;
-    created_at: string;
+    created_at: Datetime;
     dates: string;
-    files_expire_at: string;
+    files_expire_at: Datetime;
     items_count: number;
-    last_time_at: string;
+    last_time_at: Datetime;
     multi_day: boolean;
     needed_positions_count: number;
     other_time_count: number;
@@ -515,7 +522,7 @@ export type Plan = Resource<
     sort_date: string;
     title: string | null;
     total_length: number;
-    updated_at: string;
+    updated_at: Datetime;
   },
   {
     service_type: ServiceType;
@@ -594,16 +601,16 @@ export type Series = Resource<"Series", {}>;
 export type ServiceType = Resource<
   "ServiceType",
   {
-    archived_at: string | null;
+    archived_at: DatetimeOpt;
     attachment_types_enabled: boolean;
     background_check_permissions: string;
     comment_permissions: string;
-    created_at: string;
+    created_at: Datetime;
     custom_item_types: {
       name: string;
       color: string;
     }[];
-    deleted_at: string | null;
+    deleted_at: DatetimeOpt;
     frequency: string;
     last_plan_from: string;
     name: string;
@@ -614,7 +621,7 @@ export type ServiceType = Resource<
       name: string;
       color: string;
     }[];
-    updated_at: string;
+    updated_at: Datetime;
   },
   {
     parent: Folder;
@@ -651,14 +658,14 @@ export type Song = Resource<
     author: string | null;
     ccli_number: number | null;
     copyright: string | null;
-    created_at: string;
+    created_at: Datetime;
     hidden: boolean;
-    last_scheduled_at: string;
+    last_scheduled_at: Datetime;
     last_scheduled_short_dates: string;
     notes: string | null;
     themes: string | null;
     title: string;
-    updated_at: string;
+    updated_at: Datetime;
   },
   undefined
 >;
@@ -711,7 +718,31 @@ export type TagGroup = Resource<"TagGroup", {}>;
 /**
  * @ignore
  */
-export type Team = Resource<"Team", {}>;
+export type Team = Resource<
+  "Team",
+  {
+    archived_at: DatetimeOpt;
+    assigned_directly: boolean;
+    created_at: Datetime;
+    default_prepare_notifications: boolean;
+    default_status: string; // TODO: enum
+    last_plan_from: string; // TODO: enum
+    name: string;
+    rehearsal_team: boolean;
+    schedule_to: "plan" | "time";
+    secure_team: boolean;
+    sequence: unknown | null; // TODO: type
+    stage_color: string;
+    stage_variant: string; // TODO: enum
+    updated_at: Datetime;
+    viewers_see: number;
+  },
+  {
+    default_responds_to: Person;
+    service_type: ServiceType;
+    service_types: ServiceType[];
+  }
+>;
 
 /**
  * @ignore

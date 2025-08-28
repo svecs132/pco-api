@@ -12,6 +12,7 @@ import Organization from "./organization";
 import Person from "./person";
 import ServiceType from "./service_type";
 import Song from "./song";
+import Team from "./team";
 
 /**
  * A client for the PCO Services API.
@@ -166,5 +167,35 @@ export class ServicesClient extends Client {
       throw new Error(`Error fetching song: ${res.errors}`);
     }
     return new Song(this, res.data);
+  }
+
+  /**
+   * Fetches all the teams in the organization.
+   *
+   * @param {RequestPagination} pagination pagination options for the request
+   * @returns {Promise<Team[]>} a promise that resolves to an array of Team objects
+   */
+  public async getTeams(pagination: RequestPagination = {}): Promise<Team[]> {
+    const path = `teams?${paginate(pagination)}`;
+    const res = await this.fetch<types.Team[]>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching teams: ${res.errors}`);
+    }
+    return res.data.map((data) => new Team(this, data));
+  }
+
+  /**
+   * Fetches a specific team by its ID.
+   *
+   * @param {string} id the ID of the team to fetch
+   * @returns {Promise<Team>} a promise that resolves to a Team object
+   */
+  public async getTeam(id: string): Promise<Team> {
+    const path = `teams/${id}`;
+    const res = await this.fetch<types.Team>(path);
+    if ("errors" in res) {
+      throw new Error(`Error fetching team: ${res.errors}`);
+    }
+    return new Team(this, res.data);
   }
 }

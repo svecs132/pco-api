@@ -5,6 +5,7 @@ let services = new ServicesClient({
   secret: process.env["PCO_SECRET"] || "",
 });
 
-const songs = await services.getSongs({ per_page: 100 });
+const team = (await services.getTeams())[0];
+const people = await team!.getPeople();
 
-console.log(songs.join("\n"));
+console.log(people.join("\n"));

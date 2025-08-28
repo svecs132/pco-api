@@ -1,6 +1,6 @@
 # pco-api
 
-> a Typescript library for the [planning center](https://planningcenter.com) [API](https://developer.planning.center/docs)
+> a TypeScript library for the [planning center](https://planningcenter.com) [API](https://developer.planning.center/docs)
 
 [![JSR](https://jsr.io/badges/@svecs132/pco-api)](https://jsr.io/@svecs132/pco-api)
 
