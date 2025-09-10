@@ -23,9 +23,6 @@ export default class Plan extends Resource<types.Plan> {
 
   /**
    * Fetches all items in the plan.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<Item[]>} a promise that resolves to an array of Item objects
    */
   public async getItems(pagination: RequestPagination = {}): Promise<Item[]> {
     const path = `service_types/${this.serviceTypeId}/plans/${

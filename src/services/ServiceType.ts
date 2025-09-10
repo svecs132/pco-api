@@ -21,10 +21,6 @@ export default class ServiceType extends Resource<types.ServiceType> {
 
   /**
    * Fetches all the plans associated with the service type.
-   *
-   * @param {("future" | "past" | "no_dates" | undefined)} filter filter for plans based on dates
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<Plan[]>} a promise that resolves to an array of Plan objects
    */
   public async getPlans(
     filter: "future" | "past" | "no_dates" | undefined = undefined,
@@ -42,9 +38,6 @@ export default class ServiceType extends Resource<types.ServiceType> {
 
   /**
    * Fetches a specific plan by its ID.
-   *
-   * @param {string} id the ID of the plan to fetch
-   * @returns {Promise<Plan>} a promise that resolves to a Plan object
    */
   public async getPlan(id: string): Promise<Plan> {
     const path = `service_types/${this.id}/plans/${id}`;
@@ -57,9 +50,6 @@ export default class ServiceType extends Resource<types.ServiceType> {
 
   /**
    * Fetches all the teams associated with the service type.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<Team[]>} a promise that resolves to an array of Team objects
    */
   public async getTeams(pagination: RequestPagination = {}): Promise<Team[]> {
     const path = `service_types/${this.id}/teams?${paginate(pagination)}`;

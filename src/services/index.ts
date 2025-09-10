@@ -31,9 +31,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches all the folders in the organization.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<Folder[]>} a promise that resolves to an array of Folder objects
    */
   public async getFolders(
     pagination: RequestPagination = {}
@@ -48,9 +45,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches a specific folder by its ID.
-   *
-   * @param {string} id the ID of the folder to fetch
-   * @returns {Promise<Folder>} a promise that resolves to a Folder object
    */
   public async getFolder(id: string): Promise<Folder> {
     const path = `folders/${id}`;
@@ -63,8 +57,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches the organization associated with the API credentials.
-   *
-   * @returns {Promise<Organization>} a promise that resolves to an Organization object
    */
   public async getOrganization(): Promise<Organization> {
     const path = ``;
@@ -77,9 +69,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches all the people in the organization.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<Person[]>} a promise that resolves to an array of Person objects
    */
   public async getPeople(
     pagination: RequestPagination = {}
@@ -94,9 +83,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches a specific person by their ID.
-   *
-   * @param {string} id the ID of the person to fetch
-   * @returns {Promise<Person>} a promise that resolves to a Person object
    */
   public async getPerson(id: string): Promise<Person> {
     const path = `people/${id}`;
@@ -109,9 +95,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches all the service types in the organization.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<ServiceType[]>} a promise that resolves to an array of ServiceType objects
    */
   public async getServiceTypes(
     pagination: RequestPagination = {}
@@ -126,9 +109,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches a specific service type by its ID.
-   *
-   * @param {string} id the ID of the service type to fetch
-   * @returns {Promise<ServiceType>} a promise that resolves to a ServiceType object
    */
   public async getServiceType(id: string): Promise<ServiceType> {
     const path = `service_types/${id}`;
@@ -141,9 +121,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches all the songs in the organization.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<Song[]>} a promise that resolves to an array of Song objects
    */
   public async getSongs(pagination: RequestPagination = {}): Promise<Song[]> {
     const path = `songs?${paginate(pagination)}`;
@@ -156,9 +133,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches a specific song by its ID.
-   *
-   * @param {string} id the ID of the song to fetch
-   * @returns {Promise<Song>} a promise that resolves to a Song object
    */
   public async getSong(id: string): Promise<Song> {
     const path = `songs/${id}`;
@@ -171,9 +145,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches all the teams in the organization.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<Team[]>} a promise that resolves to an array of Team objects
    */
   public async getTeams(pagination: RequestPagination = {}): Promise<Team[]> {
     const path = `teams?${paginate(pagination)}`;
@@ -186,9 +157,6 @@ export class ServicesClient extends Client {
 
   /**
    * Fetches a specific team by its ID.
-   *
-   * @param {string} id the ID of the team to fetch
-   * @returns {Promise<Team>} a promise that resolves to a Team object
    */
   public async getTeam(id: string): Promise<Team> {
     const path = `teams/${id}`;

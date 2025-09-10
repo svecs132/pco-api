@@ -20,9 +20,6 @@ export default class Folder extends Resource<types.Folder> {
 
   /**
    * Fetches all the service types in the folder.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<ServiceType[]>} a promise that resolves to an array of ServiceType objects
    */
   public async getServiceTypes(
     pagination: RequestPagination = {}

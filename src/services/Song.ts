@@ -20,9 +20,6 @@ export default class Song extends Resource<types.Song> {
 
   /**
    * Fetches all arrangements for the song.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<Arrangement[]>} a promise that resolves to an array of Arrangement objects
    */
   public async getArrangements(
     pagination: RequestPagination = {}
@@ -37,9 +34,6 @@ export default class Song extends Resource<types.Song> {
 
   /**
    * Fetches a specific arrangement by its ID.
-   *
-   * @param {string} id the ID of the arrangement to fetch
-   * @returns {Promise<Arrangement>} a promise that resolves to an Arrangement object
    */
   public async getArrangement(id: string): Promise<Arrangement> {
     const path = `songs/${this.id}/arrangements/${id}`;

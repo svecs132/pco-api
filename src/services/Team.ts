@@ -22,9 +22,6 @@ export default class Team extends Resource<types.Team> {
 
   /**
    * Fetches all the people associated with the team.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<Person[]>} a promise that resolves to an array of Person objects
    */
   public async getPeople(
     pagination: RequestPagination = {}
@@ -39,9 +36,6 @@ export default class Team extends Resource<types.Team> {
 
   /**
    * Fetches all the service types associated with the team.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<ServiceType[]>} a promise that resolves to an array of ServiceType objects
    */
   public async getServiceTypes(
     pagination: RequestPagination = {}
@@ -56,9 +50,6 @@ export default class Team extends Resource<types.Team> {
 
   /**
    * Fetches all the team leaders associated with the team.
-   *
-   * @param {RequestPagination} pagination pagination options for the request
-   * @returns {Promise<TeamLeader[]>} a promise that resolves to an array of TeamLeader objects
    */
   public async getTeamLeaders(
     pagination: RequestPagination = {}

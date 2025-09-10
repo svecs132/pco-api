@@ -21,8 +21,6 @@ export default class TeamLeader extends Resource<types.TeamLeader> {
 
   /**
    * Fetches the person associated with the team leader position.
-   *
-   * @returns {Promise<Person>} a promise that resolves to a Person object
    */
   public async getPerson(): Promise<Person> {
     if (!this.relationships.person.data) {
@@ -38,8 +36,6 @@ export default class TeamLeader extends Resource<types.TeamLeader> {
 
   /**
    * Fetches the team this team leader belongs to.
-   *
-   * @returns {Promise<Team>} a promise that resolves to a Team object
    */
   public async getTeam(): Promise<Team> {
     if (!this.relationships.team.data) {

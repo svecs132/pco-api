@@ -3,6 +3,7 @@
 > a TypeScript library for the [planning center](https://planningcenter.com) [API](https://developer.planning.center/docs)
 
 [![JSR](https://jsr.io/badges/@svecs132/pco-api)](https://jsr.io/@svecs132/pco-api)
+[![Publish to JSR](https://github.com/svecs132/pco-api/actions/workflows/publish.yml/badge.svg)](https://github.com/svecs132/pco-api/actions/workflows/publish.yml)
 
 > [!WARNING]
 > this library is a **work in progress** and is not yet ready for production use
@@ -38,10 +39,12 @@ client.getPeople().then((people) => {
 > [!NOTE]
 > so far only focusing on the Services API but will expand to other parts in the future
 
-- [x] browse folders and service types
-- [x] get items of a plan
+wanted features:
+
+- [x] ~~browse folders and service types~~
+- [x] ~~get items of a plan~~
 - [ ] get each item's
-  - [x] planned length
+  - [x] ~~planned length~~
   - [ ] recorded length
   - [ ] recorded start time
 - [ ] get the current timer if you want

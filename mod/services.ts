@@ -6,6 +6,7 @@
 export { ServicesClient as default } from "../src/services";
 
 export { default as Arrangement } from "../src/services/Arrangement";
+export { default as Email } from "../src/services/Email";
 export { default as Folder } from "../src/services/Folder";
 export { default as Item } from "../src/services/Item";
 export { default as Organization } from "../src/services/Organization";

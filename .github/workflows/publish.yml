@@ -1,4 +1,5 @@
 name: Publish to JSR
+description: Check the JSR package and publish it to JSR
 
 on:
   push:

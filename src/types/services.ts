@@ -278,7 +278,13 @@ export type CustomSlide = Resource<"CustomSlide", {}>;
 /**
  * @ignore
  */
-export type Email = Resource<"Email", {}>;
+export type Email = Resource<
+  "Email",
+  {
+    primary: boolean;
+    address: string;
+  }
+>;
 
 /**
  * @ignore
